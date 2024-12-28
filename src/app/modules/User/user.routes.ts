@@ -14,8 +14,14 @@ router.get(
 );
 
 router.get(
+  "/getuser",
+
+  userController.getUser
+);
+
+router.get(
   "/getusers",
-  authMiddleware("SUPER_ADMIN", "ADMIN"),
+  // authMiddleware("SUPER_ADMIN", "ADMIN"),
   userController.getUsers
 );
 
