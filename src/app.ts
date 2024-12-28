@@ -11,8 +11,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Root route
-app.get("/", (req: Request, res: Response) => {
-  res.send({ message: "Your server is running now" });
+app.get("/", async (req: Request, res: Response) => {
+  try {
+    await prisma.$connect();
+    console.log("Database connected successfully!");
+    res.send({ message: "Your server is running now" });
+  } catch (error) {
+    console.error("Failed to connect to the database:", error);
+    process.exit(1); // Exit the process with failure
+  }
 });
 
 app.use("/api/user/", userRoutes);
