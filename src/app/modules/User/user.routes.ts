@@ -31,7 +31,6 @@ router.post("/login", userController.loginUser);
 router.post(
   "/create",
   validateRequest(UserValidationSchema),
-  authMiddleware("admin"),
   userController.createUser
 );
 
