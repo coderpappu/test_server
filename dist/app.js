@@ -25,13 +25,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 // Root route
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        try {
-            const allUser = yield prisma.user.findMany({});
-            res.send({ message: "Your server is running now", allUser });
-        }
-        catch (error) {
-            throw error;
-        }
+        res.send({ message: "Your server is running now" });
     }
     catch (error) {
         console.error("Failed to connect to the database:", error);
