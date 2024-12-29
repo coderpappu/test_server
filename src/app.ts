@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 // Root route
 app.get("/", async (req: Request, res: Response) => {
   try {
+    await prisma.$connect();
+    console.log("Database connected successfully!");
     res.send({ message: "Your server is running now" });
   } catch (error) {
     console.error("Failed to connect to the database:", error);

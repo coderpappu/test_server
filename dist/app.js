@@ -25,6 +25,8 @@ app.use(express_1.default.urlencoded({ extended: true }));
 // Root route
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        yield prisma.$connect();
+        console.log("Database connected successfully!");
         res.send({ message: "Your server is running now" });
     }
     catch (error) {
