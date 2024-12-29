@@ -15,7 +15,7 @@ app.get("/", async (req: Request, res: Response) => {
   try {
     try {
       const allUser = await prisma.user.findMany({});
-      res.send({ message: allUser });
+      res.send({ message: "Your server is running now", allUser });
     } catch (error) {
       throw error;
     }
