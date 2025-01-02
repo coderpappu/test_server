@@ -15,7 +15,7 @@ const getAllCompany = (userId) => __awaiter(void 0, void 0, void 0, function* ()
     let allCompany;
     // if (!userId) throw new AppError(404, "User Id Not Found");
     try {
-        const allCompany = yield prisma.company.findMany({});
+        const allCompany = yield prisma.employee.findMany({});
         // if (!allCompany || allCompany.length <= 0) {
         //   throw new AppError(404, "Company not found !");
         // }

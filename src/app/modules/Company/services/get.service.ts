@@ -9,7 +9,7 @@ const getAllCompany = async (userId: string) => {
   // if (!userId) throw new AppError(404, "User Id Not Found");
 
   try {
-    const allCompany = await prisma.company.findMany({});
+    const allCompany = await prisma.employee.findMany({});
 
     // if (!allCompany || allCompany.length <= 0) {
     //   throw new AppError(404, "Company not found !");
