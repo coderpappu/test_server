@@ -11,7 +11,9 @@ const company_controllers_1 = require("./company.controllers");
 const company_validation_1 = __importDefault(require("./company.validation"));
 const router = express_1.default.Router();
 // all company get
-router.get("/getcompany", (0, authMiddleware_1.default)("SUPER_ADMIN", "ADMIN"), company_controllers_1.companyController.getCompany);
+router.get("/getcompany", 
+// authMiddleware("SUPER_ADMIN", "ADMIN"),
+company_controllers_1.companyController.getCompany);
 router.get("/company", company_controllers_1.companyController.companyCheck);
 // specific company details get
 router.get("/getcompanydetails/:id", (0, authMiddleware_1.default)("SUPER_ADMIN", "ADMIN"), company_controllers_1.companyController.getCompanyDetails);
