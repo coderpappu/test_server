@@ -36,6 +36,14 @@ const getCompany = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         next(error);
     }
 });
+const companyCheck = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        res.send("Company Check");
+    }
+    catch (error) {
+        next(error);
+    }
+});
 // get company details
 const getCompanyDetails = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -106,4 +114,5 @@ exports.companyController = {
     getCompanyDetails,
     updateCompany,
     deleteCompany,
+    companyCheck,
 };

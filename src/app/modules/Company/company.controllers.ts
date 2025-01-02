@@ -29,6 +29,18 @@ const getCompany = async (
   }
 };
 
+const companyCheck = async (
+  req: Request & { user?: TUser },
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    res.send("Company Check");
+  } catch (error) {
+    next(error);
+  }
+};
+
 // get company details
 const getCompanyDetails = async (
   req: Request,
@@ -120,4 +132,5 @@ export const companyController = {
   getCompanyDetails,
   updateCompany,
   deleteCompany,
+  companyCheck,
 };

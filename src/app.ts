@@ -34,9 +34,6 @@ app.get("/", async (req: Request, res: Response) => {
 // application all routes
 app.use("/api/user/", userRoutes);
 app.use("/api/company/", companyRoutes);
-app.get("/company", async (req: Request, res: Response) => {
-  res.send({ message: "Company route is working" });
-});
 
 // global error handler
 app.use(globalErrorHandler);

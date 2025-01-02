@@ -12,7 +12,7 @@ router.get(
   authMiddleware("SUPER_ADMIN", "ADMIN"),
   companyController.getCompany
 );
-
+router.get("/company", companyController.companyCheck);
 // specific company details get
 router.get(
   "/getcompanydetails/:id",
