@@ -3,7 +3,6 @@ import express, { Application, Request, Response } from "express";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import { companyRoutes } from "./app/modules/Company/company.routes";
 import { userRoutes } from "./app/modules/User/user.routes";
-import { testRoutes } from "./app/modules/test/test.routes";
 const { PrismaClient } = require("@prisma/client");
 
 const app: Application = express();
@@ -38,7 +37,7 @@ app.get("/", async (req: Request, res: Response) => {
 app.use("/api/user/", userRoutes);
 
 app.use("/api/company/", companyRoutes);
-app.use("/api/test/", testRoutes);
+app.use("/api/acc/", userRoutes);
 
 // global error handler
 app.use(globalErrorHandler);
