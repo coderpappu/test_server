@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { companyServices } from "./services/company.services";
 
 import sendResponse from "../../../utils/sendResponse";
-import AppError from "../../errors/AppErrors";
 // import httpStatus from "http-status";
 
 // get user
@@ -14,7 +13,7 @@ const getCompany = async (
   try {
     const userId = req?.user?.id as string;
 
-    if (!userId) throw new AppError(500, "Invalid User Id");
+    // if (!userId) throw new AppError(500, "Invalid User Id");
 
     const result: any = await companyServices.getAllCompany(userId);
 
