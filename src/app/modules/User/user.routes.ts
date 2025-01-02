@@ -1,6 +1,7 @@
 import express from "express";
 import authMiddleware from "../../middleware/authMiddleware";
 import validateRequest from "../../middleware/validateRequest";
+import { companyController } from "../Company/company.controllers";
 import { userController } from "./user.controllers";
 import UserValidationSchema from "./user.validation";
 
@@ -11,6 +12,11 @@ router.get(
   "/getuser",
   authMiddleware("SUPER_ADMIN", "ADMIN"),
   userController.getUser
+);
+router.get(
+  "/getcompany",
+  authMiddleware("SUPER_ADMIN", "ADMIN"),
+  companyController.getCompany
 );
 
 router.get(

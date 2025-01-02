@@ -7,11 +7,13 @@ exports.userRoutes = void 0;
 const express_1 = __importDefault(require("express"));
 const authMiddleware_1 = __importDefault(require("../../middleware/authMiddleware"));
 const validateRequest_1 = __importDefault(require("../../middleware/validateRequest"));
+const company_controllers_1 = require("../Company/company.controllers");
 const user_controllers_1 = require("./user.controllers");
 const user_validation_1 = __importDefault(require("./user.validation"));
 const router = express_1.default.Router();
 // get user data
 router.get("/getuser", (0, authMiddleware_1.default)("SUPER_ADMIN", "ADMIN"), user_controllers_1.userController.getUser);
+router.get("/getcompany", (0, authMiddleware_1.default)("SUPER_ADMIN", "ADMIN"), company_controllers_1.companyController.getCompany);
 router.get("/getuser", user_controllers_1.userController.getUser);
 router.get("/getusers", 
 // authMiddleware("SUPER_ADMIN", "ADMIN"),
