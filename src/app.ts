@@ -37,7 +37,6 @@ app.get("/", async (req: Request, res: Response) => {
 app.use("/api/user/", userRoutes);
 
 app.use("/api/company/", companyRoutes);
-app.use("/api/acc/", userRoutes);
 
 // global error handler
 app.use(globalErrorHandler);
