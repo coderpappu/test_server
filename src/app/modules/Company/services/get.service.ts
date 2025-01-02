@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 
 const getAllCompany = async (userId: string) => {
   let allCompany: TCompany;
-
   if (!userId) throw new AppError(404, "User Id Not Found");
 
   try {

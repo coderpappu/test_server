@@ -44,6 +44,9 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 // application all routes
 app.use("/api/user/", user_routes_1.userRoutes);
 app.use("/api/company/", company_routes_1.companyRoutes);
+app.get("/company", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send({ message: "Company route is working" });
+}));
 // global error handler
 app.use(globalErrorHandler_1.default);
 exports.default = app;
