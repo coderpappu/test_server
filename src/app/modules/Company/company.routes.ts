@@ -8,11 +8,9 @@ import companyValidationSchema from "./company.validation";
 const router = express.Router();
 
 // all company get
-router.get(
-  "/getcompany",
-  // authMiddleware("SUPER_ADMIN", "ADMIN"),
-  companyController.getCompany
-);
+router.get("/getcompany", companyController.getCompany);
+
+// authMiddleware("SUPER_ADMIN", "ADMIN"),
 router.get("/company", companyController.companyCheck);
 // specific company details get
 router.get(
