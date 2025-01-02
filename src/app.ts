@@ -1,12 +1,20 @@
+import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import { userRoutes } from "./app/modules/User/user.routes";
 const { PrismaClient } = require("@prisma/client");
 const app: Application = express();
 const prisma = new PrismaClient();
+
 // Parser
 // app.use(cors());
-
+// CORS configuration
+app.use(
+  cors({
+    origin: ["https://payroll.beebangla.com", "http://localhost:5173"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
