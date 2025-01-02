@@ -10,13 +10,13 @@ const getAllCompany = async (userId: string) => {
   // if (!userId) throw new AppError(404, "User Id Not Found");
 
   try {
-    const allCompany = await prisma.company.findMany({
+    const allCompany = await prisma.company.findFirst({
       where: {},
     });
 
-    if (!allCompany || allCompany.length <= 0) {
-      throw new AppError(404, "Company not found !");
-    }
+    // if (!allCompany || allCompany.length <= 0) {
+    //   throw new AppError(404, "Company not found !");
+    // }
 
     return allCompany;
   } catch (error) {

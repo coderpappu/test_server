@@ -12,14 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const client_1 = require("@prisma/client"); // Ensure correct import
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const globalErrorHandler_1 = __importDefault(require("./app/middleware/globalErrorHandler"));
 const company_routes_1 = require("./app/modules/Company/company.routes");
 const user_routes_1 = require("./app/modules/User/user.routes");
-const { PrismaClient } = require("@prisma/client");
 const app = (0, express_1.default)();
-const prisma = new PrismaClient();
+const prisma = new client_1.PrismaClient(); // Ensure correct initialization
 // Parser
 // app.use(cors());
 // CORS configuration

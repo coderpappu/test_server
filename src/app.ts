@@ -1,12 +1,12 @@
+import { PrismaClient } from "@prisma/client"; // Ensure correct import
 import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import { companyRoutes } from "./app/modules/Company/company.routes";
 import { userRoutes } from "./app/modules/User/user.routes";
-const { PrismaClient } = require("@prisma/client");
 
 const app: Application = express();
-const prisma = new PrismaClient();
+const prisma = new PrismaClient(); // Ensure correct initialization
 
 // Parser
 // app.use(cors());
@@ -35,7 +35,6 @@ app.get("/", async (req: Request, res: Response) => {
 
 // application all routes
 app.use("/api/user/", userRoutes);
-
 app.use("/api/company/", companyRoutes);
 
 // global error handler
