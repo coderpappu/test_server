@@ -10,7 +10,7 @@ const router = express.Router();
 // all company get
 router.get(
   "/getcompany",
-  authMiddleware("SUPER_ADMIN", "ADMIN"),
+  // authMiddleware("SUPER_ADMIN", "ADMIN"),
   companyController.getCompany
 );
 router.get("/company", companyController.companyCheck);
