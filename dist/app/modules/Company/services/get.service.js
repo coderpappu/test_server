@@ -17,8 +17,7 @@ const AppErrors_1 = __importDefault(require("../../../errors/AppErrors"));
 const prisma = new client_1.PrismaClient();
 const getAllCompany = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     let allCompany;
-    if (!userId)
-        throw new AppErrors_1.default(404, "User Id Not Found");
+    // if (!userId) throw new AppError(404, "User Id Not Found");
     try {
         const allCompany = yield prisma.company.findMany({
             where: {},

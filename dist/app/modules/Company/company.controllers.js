@@ -15,15 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.companyController = void 0;
 const company_services_1 = require("./services/company.services");
 const sendResponse_1 = __importDefault(require("../../../utils/sendResponse"));
-const AppErrors_1 = __importDefault(require("../../errors/AppErrors"));
 // import httpStatus from "http-status";
 // get user
 const getCompany = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
         const userId = (_a = req === null || req === void 0 ? void 0 : req.user) === null || _a === void 0 ? void 0 : _a.id;
-        if (!userId)
-            throw new AppErrors_1.default(500, "Invalid User Id");
+        // if (!userId) throw new AppError(500, "Invalid User Id");
         const result = yield company_services_1.companyServices.getAllCompany(userId);
         (0, sendResponse_1.default)(res, {
             statusCode: 200,
