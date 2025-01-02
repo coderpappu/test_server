@@ -56,10 +56,6 @@ declare module "node-zklib" {
   const zklib: any; // Use 'any' as a placeholder for the module type.
   export = zklib;
 }
-declare module "cors" {
-  const cors: any; // Use 'any' as a placeholder for the module type.
-  export = cors;
-}
 
 declare module "bcryptjs" {
   export function hash(password: string, saltRounds: number): Promise<string>;
