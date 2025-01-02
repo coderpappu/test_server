@@ -4,6 +4,7 @@ import authMiddleware from "../../middleware/authMiddleware";
 import validateRequest from "../../middleware/validateRequest";
 import { companyController } from "./company.controllers";
 import companyValidationSchema from "./company.validation";
+
 const router = express.Router();
 
 // all company get
