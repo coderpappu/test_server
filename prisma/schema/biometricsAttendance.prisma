@@ -1,0 +1,13 @@
+model BiometricsAttendance {
+  id           String    @id @default(uuid())
+  userSn       Int
+  deviceUserId String
+  recordTime   DateTime
+  ip           String
+  employee_id  String?
+  employee     Employee? @relation(fields: [employee_id], references: [id])
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("biometrics_attendance")
+}

@@ -1,0 +1,38 @@
+model Loan {
+  id                     String          @id @unique @default(uuid())
+  employee_id            String
+  loanType_id            String
+  company_id             String?
+  amount                 Int
+  approval_interest_rate Int?
+  installment_month      Int
+  issue_date             DateTime?
+  repayment_start_date   DateTime?
+  repayment_end_date     DateTime?
+  loan_status            LoanStatus      @default(PENDING)
+  approval_employee_id   String?
+  Company                Company?        @relation(fields: [company_id], references: [id])
+  LoanType               LoanType        @relation(fields: [loanType_id], references: [id])
+  Employee               Employee        @relation(fields: [employee_id], references: [id])
+  createdAt              DateTime        @default(now())
+  updatedAt              DateTime        @updatedAt
+  LoanGuarantor          LoanGuarantor[]
+
+  @@map("loans")
+}
+
+enum LoanStatus {
+  PENDING
+  REJECTED
+  APPROVED
+}
+
+model LoanGuarantor {
+  id          String   @id @unique @default(uuid())
+  loan_id     String
+  employee_id String
+  Employee    Employee @relation(fields: [employee_id], references: [id])
+  Loan        Loan     @relation(fields: [loan_id], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

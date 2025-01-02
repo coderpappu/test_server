@@ -1,0 +1,26 @@
+model Brand {
+  id            String   @id @default(uuid())
+  titleText     String
+  footerText    String
+  language      String
+  darkFileName  String
+  darkFilePath  String
+  darkFileSize  Int
+  darkMimeType  String
+  lightFileName String
+  lightFilePath String
+  lightFileSize Int
+  lightMimeType String
+  favFileName   String
+  favFilePath   String
+  favFileSize   Int
+  favMimeType   String
+  user_id       String?
+  company_id    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User?    @relation(fields: [user_id], references: [id])
+  company       Company? @relation(fields: [company_id], references: [id])
+
+  @@map("brands")
+}

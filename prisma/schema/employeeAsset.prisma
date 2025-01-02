@@ -1,0 +1,16 @@
+model EmployeeAsset {
+  id              Int          @id @default(autoincrement())
+  employee_id     String
+  documentType_id String
+  company_id      String
+  fileName        String
+  filePath        String // Path to the file on the server
+  fileSize        Int
+  mimeType        String
+  company         Company      @relation(fields: [company_id], references: [id])
+  employee        Employee     @relation(fields: [employee_id], references: [id])
+  documentType    DocumentType @relation(fields: [documentType_id], references: [id])
+  createdAt       DateTime     @default(now())
+
+  @@map("employeeAssets")
+}

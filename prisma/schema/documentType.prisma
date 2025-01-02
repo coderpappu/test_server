@@ -1,0 +1,19 @@
+model DocumentType {
+  id            String          @id @default(uuid())
+  name          String
+  status        TypesStatus
+  company_id    String
+  user_id       String
+  user          User?           @relation(fields: [user_id], references: [id])
+  company       Company?        @relation(fields: [company_id], references: [id])
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  EmployeeAsset EmployeeAsset[]
+
+  @@map("document_types")
+}
+
+enum TypesStatus {
+  NOT_REQUIRED
+  IS_REQUIRED
+}

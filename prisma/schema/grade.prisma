@@ -1,0 +1,16 @@
+model grade {
+  id            String          @id @default(uuid())
+  name          String          @unique
+  basic_salary  Int
+  overtime_rate Int
+  company_id    String
+  user_id       String
+  User          User            @relation(fields: [user_id], references: [id])
+  Company       Company         @relation(fields: [company_id], references: [id])
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+  Employeegrade Employeegrade[]
+  EmployeeBasic EmployeeBasic[]
+
+  @@map("grades")
+}

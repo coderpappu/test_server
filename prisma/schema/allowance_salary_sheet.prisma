@@ -1,0 +1,20 @@
+model allowance_salary_sheet {
+  id                String            @id @default(uuid())
+  allowance_id      String
+  salary_sheet_id   String
+  amount            Int
+  company_id        String
+  user_id           String
+  employee_id       String
+  generate_date     String
+  User              User              @relation(fields: [user_id], references: [id])
+  Company           Company           @relation(fields: [company_id], references: [id])
+  EmployeeAllowance EmployeeAllowance @relation(fields: [allowance_id], references: [id])
+  Employee          Employee          @relation(fields: [employee_id], references: [id])
+  SalarySheet       salary_sheet      @relation(fields: [salary_sheet_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("allowance_salary_sheets")
+}

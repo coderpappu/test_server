@@ -1,0 +1,27 @@
+model salary_sheet {
+  id            String    @id @default(uuid())
+  generate_date String
+  basic_salary  Int
+  status        PayStatus @default(Unpaid)
+  employee_id   String
+  company_id    String
+  user_id       String
+
+  User     User     @relation(fields: [user_id], references: [id])
+  Company  Company  @relation(fields: [company_id], references: [id])
+  Employee Employee @relation(fields: [employee_id], references: [id])
+
+  created_at              DateTime                  @default(now())
+  updated_at              DateTime                  @updatedAt
+  allowance_salary_sheet  allowance_salary_sheet[]
+  deduction_salary_sheet  deduction_salary_sheet[]
+  overtime_salary_sheet   overtime_salary_sheet[]
+  commission_salary_sheet commission_salary_sheet[]
+
+  @@map("salary_sheets")
+}
+
+enum PayStatus {
+  Paid
+  Unpaid
+}

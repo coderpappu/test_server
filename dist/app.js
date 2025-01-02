@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const globalErrorHandler_1 = __importDefault(require("./app/middleware/globalErrorHandler"));
+const company_routes_1 = require("./app/modules/Company/company.routes");
 const user_routes_1 = require("./app/modules/User/user.routes");
 const { PrismaClient } = require("@prisma/client");
 const app = (0, express_1.default)();
@@ -40,7 +41,9 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         process.exit(1); // Exit the process with failure
     }
 }));
+// application all routes
 app.use("/api/user/", user_routes_1.userRoutes);
+app.use("/api/company/", company_routes_1.companyRoutes);
 // global error handler
 app.use(globalErrorHandler_1.default);
 exports.default = app;

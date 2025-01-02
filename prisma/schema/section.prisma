@@ -1,0 +1,13 @@
+model Section {
+  id              String            @id @default(uuid())
+  user_id         String?
+  company_id      String?
+  user            User?             @relation(fields: [user_id], references: [id])
+  company         Company?          @relation(fields: [company_id], references: [id])
+  name            String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  EmployeeSection EmployeeSection[]
+
+  @@map("sections")
+}

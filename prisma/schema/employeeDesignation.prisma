@@ -1,0 +1,17 @@
+model EmployeeDesignation {
+  id             String  @id @default(uuid())
+  company_id     String?
+  user_id        String?
+  employee_id    String?
+  designation_id String?
+
+  company     Company?     @relation(fields: [company_id], references: [id])
+  user        User?        @relation(fields: [user_id], references: [id])
+  employee    Employee?    @relation(fields: [employee_id], references: [id], onDelete: Cascade)
+  designation Designation? @relation(fields: [designation_id], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("employee_designations")
+}

@@ -1,0 +1,18 @@
+model EmployeeOverTime {
+  id   String @id @default(uuid())
+  hour String
+  rate Int
+
+  company_id  String
+  user_id     String
+  employee_id String
+
+  Company  Company  @relation(fields: [company_id], references: [id])
+  User     User     @relation(fields: [user_id], references: [id])
+  Employee Employee @relation(fields: [employee_id], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("employee_overtime")
+}

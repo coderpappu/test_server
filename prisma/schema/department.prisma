@@ -1,0 +1,14 @@
+model Department {
+  id                 String               @id @default(uuid())
+  name               String
+  user_id            String?
+  company_id         String?
+  department_head_id String?
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  user               User?                @relation(fields: [user_id], references: [id])
+  company            Company?             @relation(fields: [company_id], references: [id])
+  EmployeeDepartment EmployeeDepartment[]
+
+  @@map("departments") // Maps to your existing MySQL table name
+}

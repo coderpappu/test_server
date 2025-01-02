@@ -1,0 +1,85 @@
+// user account schema
+model User {
+  id                  String                @id @default(uuid())
+  first_name          String
+  last_name           String
+  email               String                @unique
+  phone               String?
+  password            String
+  file                String?
+  type                UserRole              @default(SUPER_ADMIN)
+  status              UserStatus            @default(ACTIVE)
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  Company             Company[]
+  Employee            Employee[]
+  Shift               Shift[]
+  department          Department[]
+  designation         Designation[]
+  Section             Section[]
+  EmployeeDesignation EmployeeDesignation[]
+  EmployeeSection     EmployeeSection[]
+  EmployeeDepartment  EmployeeDepartment[]
+  EmployeeShift       EmployeeShift[]
+  Setting             Setting[]
+  employeeSetting     employeeSetting[]
+  weekend             Weekend[]
+  HolidayType         HolidayType[]
+  HolidayMapping      HolidayMapping[]
+  LeaveType           LeaveType[]
+  EmployeeLeave       EmployeeLeave[]
+  EarnLeave           EarnLeave[]
+  grade               grade[]
+  allowance_type      allowance_type[]
+
+  LoanType               LoanType[]
+  Branch                 Branch[]
+  leaveApplicationFormat leaveApplicationFormat[]
+  DocumentType           DocumentType[]
+  Brand                  Brand[]
+  SystemSettings         SystemSettings[]
+  CurrencySettings       CurrencySettings[]
+  EmailSettings          EmailSettings[]
+  PaymentSettings        PaymentSettings[]
+  ZoomSettings           ZoomSettings[]
+  Notification           Notification[]
+  BiometricSettings      BiometricSettings[]
+
+  experienceCertificate    experienceCertificate[]
+  joiningLetter            joiningLetter[]
+  nocLetter                nocLetter[]
+  offerLetter              offerLetter[]
+  JobTimeLine              JobTimeLine[]
+  EmployeeSalary           EmployeeSalary[]
+  EmployeeAllowance        EmployeeAllowance[]
+  PayslipEmployeeAllowance PayslipEmployeeAllowance[]
+  deductionType            deductionType[]
+  EmployeeDeduction        EmployeeDeduction[]
+  EmployeeBasic            EmployeeBasic[]
+  EmployeeCommission       EmployeeCommission[]
+  EmployeeOverTime         EmployeeOverTime[]
+  CompanyBonus             CompanyBonus[]
+  BonusType                BonusType[]
+  EmployeeIncrement        EmployeeIncrement[]
+  allowance_salary_sheet   allowance_salary_sheet[]
+  salary_sheet             salary_sheet[]
+  deduction_salary_sheet   deduction_salary_sheet[]
+  overtime_salary_sheet    overtime_salary_sheet[]
+  commission_salary_sheet  commission_salary_sheet[]
+  BiometricDevice          BiometricDevice[]
+
+  @@map("users")
+}
+
+// enum data 
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  SUBSCRIBER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}

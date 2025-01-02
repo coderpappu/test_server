@@ -1,0 +1,20 @@
+model EmployeeSalary {
+  id          String @id @default(uuid())
+  employee_id String
+
+  totalAllowance   String
+  totalDeduction   String
+  netSalary        String
+  totalDaysInMonth String
+  totalBonus       String?
+  presentDays      String
+  paidLeaveDays    String
+  status           String
+  company_id       String
+  user_id          String
+  User             User     @relation(fields: [user_id], references: [id])
+  Company          Company  @relation(fields: [company_id], references: [id])
+  Employee         Employee @relation(fields: [employee_id], references: [id])
+
+  @@map("employee_salarys")
+}

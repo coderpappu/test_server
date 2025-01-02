@@ -1,0 +1,18 @@
+model EmployeeBasic {
+  id          String @id @default(uuid())
+  grade_id    String
+  amount      Int
+  employee_id String
+  company_id  String
+  user_id     String
+
+  User     User     @relation(fields: [user_id], references: [id])
+  Company  Company  @relation(fields: [company_id], references: [id])
+  Employee Employee @relation(fields: [employee_id], references: [id])
+  Grade    grade    @relation(fields: [grade_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("employee_basic")
+}

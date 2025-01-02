@@ -1,0 +1,8 @@
+model Image {
+  id        Int      @id @default(autoincrement())
+  fileName  String
+  filePath  String // Path to the file on the server
+  fileSize  Int
+  mimeType  String
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,18 @@
+model Weekend {
+  id         String   @id @default(uuid())
+  company_id String
+  userId     String
+  name       String   @unique()
+  status     Status   @default(ACTIVE)
+  company    Company  @relation(fields: [company_id], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("weekends")
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}

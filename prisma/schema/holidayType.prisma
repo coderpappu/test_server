@@ -1,0 +1,14 @@
+model HolidayType {
+  id         String   @id @default(uuid())
+  user_id    String
+  company_id String
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  User           User             @relation(fields: [user_id], references: [id])
+  Company        Company          @relation(fields: [company_id], references: [id])
+  HolidayMapping HolidayMapping[]
+
+  @@map("holiday_types")
+}

@@ -1,0 +1,16 @@
+model EarnLeave {
+  id            String          @id @default(uuid())
+  name          String          @unique
+  code          String
+  workday       Int
+  leaveday      Int
+  company_id    String
+  user_id       String
+  User          User            @relation(fields: [user_id], references: [id])
+  Company       Company         @relation(fields: [company_id], references: [id])
+  EmployeeLeave EmployeeLeave[]
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+
+  @@map("earnleaves")
+}

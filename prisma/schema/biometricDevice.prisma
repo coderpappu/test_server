@@ -1,0 +1,25 @@
+model BiometricDevice {
+  id           String       @id @default(uuid())
+  name         String
+  configMethod ConfigMethod
+  apiUrl       String?
+  username     String?
+  password     String?
+  authKey      String?
+  ipAddress    String?
+  port         String?
+  company_id   String
+  user_id      String
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  User    User    @relation(fields: [user_id], references: [id])
+  Company Company @relation(fields: [company_id], references: [id])
+
+  @@map("biometric_devices")
+}
+
+enum ConfigMethod {
+  API
+  IP
+}

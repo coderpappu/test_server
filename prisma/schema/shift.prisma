@@ -1,0 +1,17 @@
+// Shift schema
+model Shift {
+  id              String          @id @default(uuid())
+  name            String          @unique
+  start_time      String
+  end_time        String
+  late_time_count String
+  user            User            @relation(fields: [user_id], references: [id])
+  user_id         String
+  company         Company         @relation(fields: [company_id], references: [id])
+  company_id      String
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  EmployeeShift   EmployeeShift[]
+
+  @@map("shifts")
+}

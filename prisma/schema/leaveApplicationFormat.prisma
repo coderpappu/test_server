@@ -1,0 +1,12 @@
+model leaveApplicationFormat {
+  id         String   @id @default(uuid())
+  formatData String   @db.LongText // Changed to LongText to store large content
+  company_id String
+  user_id    String
+  User       User     @relation(fields: [user_id], references: [id])
+  company    Company  @relation(fields: [company_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("leaveApplicationFormat")
+}

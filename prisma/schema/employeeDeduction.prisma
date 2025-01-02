@@ -1,0 +1,22 @@
+// this schema for connect employee and deduction 
+
+model EmployeeDeduction {
+  id                String @id @default(uuid())
+  deduction_type_id String
+  type              Types
+  value             Int    @default(0)
+  employee_id       String
+  company_id        String
+  user_id           String
+
+  User          User          @relation(fields: [user_id], references: [id])
+  Company       Company       @relation(fields: [company_id], references: [id])
+  Employee      Employee      @relation(fields: [employee_id], references: [id])
+  DeductionType deductionType @relation(fields: [deduction_type_id], references: [id])
+
+  created_at             DateTime                 @default(now())
+  updated_at             DateTime                 @updatedAt
+  deduction_salary_sheet deduction_salary_sheet[]
+
+  @@map("employee_deductions")
+}

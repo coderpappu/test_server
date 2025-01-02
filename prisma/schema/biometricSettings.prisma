@@ -1,0 +1,22 @@
+model BiometricSettings {
+  id String @id @default(uuid())
+
+  company_id String
+
+  // Biometric Settings Fields
+  url       String
+  username  String
+  password  String
+  authToken String? // Optional field for auth token
+
+  // Relations to User and Company models
+  user    User    @relation(fields: [user_id], references: [id])
+  user_id String
+  company Company @relation(fields: [company_id], references: [id])
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("biometric_settings")
+}

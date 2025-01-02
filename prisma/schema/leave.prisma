@@ -1,0 +1,20 @@
+model LeaveType {
+  id String @id @default(uuid())
+
+  name        String  @unique
+  company_id  String
+  user_id     String
+  code        String
+  type        String
+  day         Int // Number of allowed leave days per year
+  description String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  User          User            @relation(fields: [user_id], references: [id])
+  Company       Company         @relation(fields: [company_id], references: [id])
+  EmployeeLeave EmployeeLeave[]
+
+  @@map("leaveTypes")
+}

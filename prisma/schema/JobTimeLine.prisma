@@ -1,0 +1,19 @@
+model JobTimeLine {
+  id             String   @id @default(uuid())
+  jobTitle       String
+  jobDescription String
+  company_name   String
+  jobType        String
+  jobStart       String
+  jobEnd         String
+  company_id     String
+  user_id        String
+  employee_id    String
+  employee       Employee @relation(fields: [employee_id], references: [id])
+  User           User     @relation(fields: [user_id], references: [id])
+  company        Company  @relation(fields: [company_id], references: [id])
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  @@map("jobTimeLines")
+}

@@ -1,0 +1,16 @@
+model allowance_type {
+  id   String @id @default(uuid())
+  name String @unique
+
+  company_id String
+  user_id    String
+  User       User    @relation(fields: [user_id], references: [id])
+  Company    Company @relation(fields: [company_id], references: [id])
+
+  created_at               DateTime                   @default(now())
+  updated_at               DateTime                   @updatedAt
+  EmployeeAllowance        EmployeeAllowance[]
+  PayslipEmployeeAllowance PayslipEmployeeAllowance[]
+
+  @@map("allowance_types")
+}

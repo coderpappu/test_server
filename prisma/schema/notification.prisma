@@ -1,0 +1,23 @@
+model Notification {
+  id               String  @id @default(uuid())
+  newUser          Boolean @default(false)
+  newLeave         Boolean @default(false)
+  complaintResent  Boolean @default(false)
+  leaveActionSent  Boolean @default(false)
+  payslipSent      Boolean @default(false)
+  registrationSent Boolean @default(false)
+  terminationSent  Boolean @default(false)
+  transferSent     Boolean @default(false)
+  warningSent      Boolean @default(false)
+
+  // Relation to the User and Company models
+  user       User    @relation(fields: [user_id], references: [id])
+  user_id    String
+  company    Company @relation(fields: [company_id], references: [id])
+  company_id String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("notifications")
+}

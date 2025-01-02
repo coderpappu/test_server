@@ -1,0 +1,20 @@
+export type TCompany = {
+  company_name: String;
+  address: String;
+  country: String;
+  city: String;
+  state: String;
+  postal_code?: String;
+  email: String;
+  phone_number: String;
+  mobile_number?: String;
+  fax?: String;
+  website_url?: String;
+  date_format?: String;
+  timezone: String;
+  language?: String;
+  currency_code?: String;
+  currency_symbol?: String;
+  logo?: String;
+  userId: String;
+};

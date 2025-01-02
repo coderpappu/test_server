@@ -1,0 +1,78 @@
+model Employee {
+  id                      String                    @id @unique @default(uuid())
+  employeeId              String                    @unique @default("EM202200")
+  user_id                 String
+  user                    User                      @relation(fields: [user_id], references: [id])
+  company_id              String
+  company                 Company                   @relation(fields: [company_id], references: [id])
+  name                    String
+  email                   String
+  phone                   String
+  present_address         String
+  permanent_address       String?
+  gender                  String
+  religion                EmployeeReligion
+  birth_date              String
+  joining_date            String
+  terminate_date          String?
+  image                   String
+  job_status              JobStatus
+  reference               String?
+  spouse_name             String?
+  emergency_contact       String
+  id_type                 IdType
+  id_number               String
+  deviceUserId            String?
+  biometrics_Attendance   BiometricsAttendance[]
+  status                  EmployeeStatus
+  password                String
+  createdAt               DateTime                  @default(now())
+  updatedAt               DateTime                  @updatedAt
+  EmployeeDesignation     EmployeeDesignation[]
+  EmployeeSection         EmployeeSection[]
+  EmployeeDepartment      EmployeeDepartment[]
+  EmployeeShift           EmployeeShift[]
+  Attendance              Attendance[]
+  EmployeeLeave           EmployeeLeave[]
+  EmployeeAllowance       EmployeeAllowance[]
+  EmployeeDeduction       EmployeeDeduction[]
+  Employeegrade           Employeegrade[]
+  LoanGuarantor           LoanGuarantor[]
+  EmployeeAsset           EmployeeAsset[]
+  JobTimeLine             JobTimeLine[]
+  EmployeeSalary          EmployeeSalary[]
+  EmployeeBasic           EmployeeBasic[]
+  EmployeeCommission      EmployeeCommission[]
+  EmployeeOverTime        EmployeeOverTime[]
+  EmployeeIncrement       EmployeeIncrement[]
+  salary_sheet            salary_sheet[]
+  allowance_salary_sheet  allowance_salary_sheet[]
+  deduction_salary_sheet  deduction_salary_sheet[]
+  overtime_salary_sheet   overtime_salary_sheet[]
+  commission_salary_sheet commission_salary_sheet[]
+  Loan                    Loan[]
+
+  @@map("employees")
+}
+
+enum EmployeeReligion {
+  ISLAM
+  HINDUISM
+  BUDDHISM
+  OTHERS
+}
+
+enum JobStatus {
+  PROBATION_PERIOD
+  PERMANENT
+}
+
+enum IdType {
+  NID
+  PASSPORT
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+}

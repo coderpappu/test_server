@@ -1,0 +1,21 @@
+model PayslipEmployeeAllowance {
+  id                String @id @default(uuid())
+  allowance_type_id String
+  type              Types
+  basic_percentage  Int
+  amount            Int
+
+  employeeAllowance_id String
+  employee_id          String
+  company_id           String
+  user_id              String
+  AllowanceType        allowance_type    @relation(fields: [allowance_type_id], references: [id])
+  EmployeeAllowance    EmployeeAllowance @relation(fields: [employeeAllowance_id], references: [id])
+  User                 User              @relation(fields: [user_id], references: [id])
+  Company              Company           @relation(fields: [company_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("payslip_employee_allowances")
+}

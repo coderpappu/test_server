@@ -1,0 +1,35 @@
+model EmployeeLeave {
+  id            String      @id @default(uuid())
+  leaveType_id  String?
+  start_date    DateTime
+  end_date      DateTime
+  reason        String
+  status        LeaveStatus @default(PENDING)
+  leaveDuration Int // Number of days requested for the leave
+  paid_status   PaidStatus  @default(UNPAID)
+  note          String?
+  company_id    String
+  employee_id   String
+  userId        String?
+  earnLeaveId   String?
+  LeaveType     LeaveType?  @relation(fields: [leaveType_id], references: [id])
+  Employee      Employee    @relation(fields: [employee_id], references: [id])
+  Company       Company     @relation(fields: [company_id], references: [id])
+  User          User?       @relation(fields: [userId], references: [id])
+  EarnLeave     EarnLeave?  @relation(fields: [earnLeaveId], references: [id])
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+
+  @@map("employeeLeave")
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum PaidStatus {
+  PAID
+  UNPAID
+}

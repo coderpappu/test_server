@@ -1,0 +1,83 @@
+// company schema
+model Company {
+  id                      String                @id @default(uuid())
+  company_name            String
+  address                 String
+  country                 String
+  city                    String
+  state                   String
+  postal_code             String?
+  phone_number            String
+  company_registration_no String?
+  fax                     String?
+  website_url             String?
+  date_format             String
+  timezone                String
+  logo                    String?
+  userId                  String
+  user                    User                  @relation(fields: [userId], references: [id])
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  Employee                Employee[]
+  Shift                   Shift[]
+  Department              Department[]
+  designation             Designation[]
+  Section                 Section[]
+  EmployeeDesignation     EmployeeDesignation[]
+  EmployeeSection         EmployeeSection[]
+  EmployeeDepartment      EmployeeDepartment[]
+  EmployeeShift           EmployeeShift[]
+  Attendance              Attendance[]
+  Setting                 Setting[]
+  employeeSetting         employeeSetting[]
+  weekend                 Weekend[]
+  HolidayType             HolidayType[]
+  HolidayMapping          HolidayMapping[]
+  LeaveType               LeaveType[]
+  EmployeeLeave           EmployeeLeave[]
+  EarnLeave               EarnLeave[]
+  grade                   grade[]
+  allowance_type          allowance_type[]
+
+  EmployeeAllowance      EmployeeAllowance[]
+  EmployeeDeduction      EmployeeDeduction[]
+  Employeegrade          Employeegrade[]
+  LoanType               LoanType[]
+  Loan                   Loan[]
+  Branch                 Branch[]
+  leaveApplicationFormat leaveApplicationFormat[]
+  DocumentType           DocumentType[]
+  EmployeeAsset          EmployeeAsset[]
+  Brand                  Brand[]
+  SystemSettings         SystemSettings[]
+  CurrencySettings       CurrencySettings[]
+  EmailSettings          EmailSettings[]
+  PaymentSettings        PaymentSettings[]
+  ZoomSettings           ZoomSettings[]
+  Notification           Notification[]
+  BiometricSettings      BiometricSettings[]
+
+  experienceCertificate    experienceCertificate[]
+  joiningLetter            joiningLetter[]
+  nocLetter                nocLetter[]
+  offerLetter              offerLetter[]
+  JobTimeLine              JobTimeLine[]
+  EmployeeSalary           EmployeeSalary[]
+  PayslipEmployeeAllowance PayslipEmployeeAllowance[]
+  deductionType            deductionType[]
+  EmployeeBasic            EmployeeBasic[]
+  EmployeeCommission       EmployeeCommission[]
+  EmployeeOverTime         EmployeeOverTime[]
+  CompanyBonus             CompanyBonus[]
+  BonusType                BonusType[]
+  EmployeeIncrement        EmployeeIncrement[]
+  allowance_salary_sheet   allowance_salary_sheet[]
+  salary_sheet             salary_sheet[]
+  deduction_salary_sheet   deduction_salary_sheet[]
+  overtime_salary_sheet    overtime_salary_sheet[]
+  commission_salary_sheet  commission_salary_sheet[]
+  BiometricDevice          BiometricDevice[]
+
+  @@unique([userId, company_name])
+  @@map("companies")
+}

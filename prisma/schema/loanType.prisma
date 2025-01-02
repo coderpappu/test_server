@@ -1,0 +1,13 @@
+model LoanType {
+  id            String   @id @unique @default(uuid())
+  name          String
+  interestRate  Int
+  maxLoanAmount Int
+  user_id       String
+  company_id    String
+  User          User     @relation(fields: [user_id], references: [id])
+  Company       Company  @relation(fields: [company_id], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  Loan          Loan[]
+}

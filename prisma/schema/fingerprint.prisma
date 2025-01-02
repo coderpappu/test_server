@@ -1,0 +1,5 @@
+model Fingerprint {
+  id String @unique @default(uuid())
+
+  Attendance Attendance[]
+}

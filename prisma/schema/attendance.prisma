@@ -1,0 +1,22 @@
+model Attendance {
+  id             String   @id @default(uuid())
+  company_id     String
+  fingerprint_id String?
+  employee_id    String
+  date           String
+  check_in_time  String?
+  check_out_time String?
+  late           Boolean  @default(false)
+  late_time      Int? // Late time in minutes, nullable
+  over_time      Int? // Overtime in minutes, nullable
+  status         String
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  // Relations
+  company     Company      @relation(fields: [company_id], references: [id])
+  employee    Employee     @relation(fields: [employee_id], references: [id])
+  fingerprint Fingerprint? @relation(fields: [fingerprint_id], references: [id])
+
+  @@map("attendances")
+}
